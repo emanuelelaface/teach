@@ -167,12 +167,7 @@ class Teach(App):
         if key == 'q':
             os.remove(self.inputfilename)
             self.inputfile.close()
-            self.draw_element = 0 
-            self.lines=[]
-            self.set_root_widget(self.upload_file())
-            students['default']['svg']=HBox([Label('Waiting for Professor', style={'margin': '0px', 'font-size': 'large', 'padding': '100px', 'background': 'lime', 'text-align': 'center'})], style={'background': 'lime'})
-            for IP in students:
-                students[IP]['update']=True
+            self.close()
 
     def upload_file(self):
         upload_file = FileUploader(style={'margin': '0px', 'font-size': 'large', 'padding': '100px', 'background': 'lime'})
@@ -203,5 +198,4 @@ class Teach(App):
             students[IP]['update'] = True
 
 if __name__ == "__main__":
-    # starts the webserver
     start(Teach, address='0.0.0.0', port=8081, start_browser=False, username=None, password=None, multiple_instance=True)
